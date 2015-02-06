@@ -1,0 +1,2 @@
+"HEY"
+<?php echo $msg; ?>
