@@ -147,6 +147,6 @@ Cookie::$salt = "SomeSecretSalt";
  */
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
-		'controller' => 'auth',
-		'action'     => 'login',
+		'controller' => 'template',
+		'action'     => 'index',
 	));
