@@ -41,3 +41,6 @@ body {
 .list-group{
   list-style-type: circle;
 }
+.text{
+  width:500px;
+}

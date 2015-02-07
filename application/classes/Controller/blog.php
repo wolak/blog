@@ -33,9 +33,25 @@ class Controller_Blog extends Controller_Template {
 
 	public function action_posts()
 	{
+		$posts = View::factory("posts");
+		$posts->posts = ORM::factory('post')->order_by('created_on')->find_all();
+		$this->template->content = $posts;
 	}
 
 	public function action_new()
 	{
+		$this->add_script('/assets/js/newblog.js');
+		$this->template->content = View::factory("newpost");
+	}
+
+	public function action_new_post()
+	{
+		$data = $this->request->post();
+		$post = ORM::factory("post");
+		$post->title = $data['title'];
+		$post->post = $data['content'];
+		$post->user_id = Auth::instance()->get_user()->id;
+		$post->save();
+		$this->response->body("done");
 	}
 }
