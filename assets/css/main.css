@@ -34,3 +34,10 @@ body {
 .mainTitle{
   text-align: center;
 }
+.list-group-item{
+  padding: 5px;
+  font-size: 150%;
+}
+.list-group{
+  list-style-type: circle;
+}
