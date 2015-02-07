@@ -18,5 +18,11 @@
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
+    <?php 
+    foreach ($scripts as $script) 
+    {
+      echo "<script src='$script'></script>";
+    }
+    ?>
   </body>
 </html>
