@@ -9,9 +9,14 @@ class Model_Post extends ORM {
 		{
 			parent::delete();
 		}
-		else
+	}
+
+	public function update(Validation $validation = NULL)
+	{
+		// Only users that created the post can update it
+		if (Auth::instance()->get_user()->id == $this->user_id)
 		{
-			Debug::log("couldnt delete");
+			parent::update($validation);
 		}
 	}
 }

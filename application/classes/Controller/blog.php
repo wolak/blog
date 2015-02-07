@@ -55,6 +55,14 @@ class Controller_Blog extends Controller_Template {
 		$post->save();
 	}
 
+	public function action_update_post()
+	{
+		$data = $this->request->post();
+		$post = ORM::factory('post', $data['post_id']);
+		$post->post = $data['content'];
+		$post->save();
+	}
+
 	public function action_delete_post()
 	{
 		$data = $this->request->post();
