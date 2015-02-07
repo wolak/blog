@@ -4,26 +4,14 @@
     <title>Bootstrap 101 Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="assets/css/bootstrap_theme.css" rel="stylesheet" media="screen">
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/assets/css/bootstrap_theme.css" rel="stylesheet" media="screen">
 
   </head>
   <body>
     <div class="container">
         <h3 class="muted">The Awesome Blog!</h3>
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="container">
-              <ul class="nav">
-                <li class="active"><a href="auth/login">Login</a></li>
-                <li><a href="blog/authors">Readers</a></li>
-                <li><a href="blog/authors">Authors</a></li>
-                <li><a href="blog/authors">Blog Posts</a></li>
-                <li><a href="blog/authors">New Post</a></li>
-              </ul>
-          </div>
-        </div><!-- /.navbar -->
-      </div>
+        <?php echo $navbar ?>
 
       <!-- Example row of columns -->
       <div class="row-fluid">
@@ -53,6 +41,6 @@
     </div> <!-- /container -->
 
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
   </body>
 </html>
