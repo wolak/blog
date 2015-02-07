@@ -9,6 +9,8 @@ class Controller_Template extends Kohana_Controller_Template {
     		$navbar = View::factory("navigation");
     		$navbar->active = $this->request->action();
     		$this->template->navbar = $navbar;
+    		$this->template->logged_in = Auth::instance()->logged_in();
+    		$this->template->content = "";
     	}
 	}
 

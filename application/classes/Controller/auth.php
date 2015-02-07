@@ -17,4 +17,11 @@ class Controller_Auth extends Controller {
 		}
 		$this->response->body($msg);
 	}
-} // End Welcome
+
+	public function action_logout()
+	{
+		Auth::instance()->logout();
+		$this->redirect(Route::url('default', array('controller' => 'blog', 'action' => 'login')));
+	}
+
+}
