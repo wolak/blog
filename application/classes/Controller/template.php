@@ -6,9 +6,17 @@ class Controller_Template extends Kohana_Controller_Template {
 	public function before()
 	{
 	    parent::before();
+    	$auth = Auth::instance();
+    	/* If the user is not logged in, redirect them to login*/
+	    if ( ! $auth->logged_in())
+	    {
+    		if ( $this->request->action() !== "login")
+    		{
+    			$this->redirect(Route::url('default', array('controller' => 'blog', 'action' => 'login')));
+    		}
+	    }
 	    if ($this->auto_render === TRUE)
     	{
-    		$auth = Auth::instance();
     		$is_author = FALSE;
     		if ($auth->logged_in())
     		{
