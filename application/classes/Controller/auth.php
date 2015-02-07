@@ -4,18 +4,18 @@ class Controller_Auth extends Controller {
 
 	public function action_login()
 	{
-		$post = $this->request->post();
-		$success = Auth::instance()->login('reader1', 'password');
-		// if login was successfull, redirect to application. 		 
+		$username = $this->request->post('username');
+		$success = Auth::instance()->login($username, 'password');
+		// if login was successful, redirect to application. 		 
 		if ($success)
 		{
-		    $msg = "okay!";
+			$this->response->body(Route::url('default', array('controller' => 'blog', 'action' => 'readers')));
 		}
 		else
 		{
-		    $msg = "Nope!";// Login failed, try again
+			//Login was not successful. Try again
+			$this->response->body("error");
 		}
-		$this->response->body($msg);
 	}
 
 	public function action_logout()

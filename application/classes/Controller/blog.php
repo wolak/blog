@@ -3,7 +3,9 @@ class Controller_Blog extends Controller_Template {
 
 	public function action_login()
 	{
-		$this->template->content ="Login";
+		$login = View::factory("login");
+		$this->add_script("/assets/js/login.js");
+		$this->template->content = $login;
 	}
 
 	public function action_logout()
