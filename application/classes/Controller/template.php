@@ -1,5 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 class Controller_Template extends Kohana_Controller_Template {
+	/* Holds the scripts to add on page loads. This is very basic. In a complex app, this would ass js and css files, as well be able to add a priority to each file. */
+	protected $_scripts = array();
 
 	public function before()
 	{
@@ -12,6 +14,15 @@ class Controller_Template extends Kohana_Controller_Template {
     		$this->template->logged_in = Auth::instance()->logged_in();
     		$this->template->content = "";
     	}
+	}
+
+	public function after()
+	{
+		if ( ! $this->request->is_ajax())
+		{
+			$this->template->scripts = $this->_scripts;
+		}
+		parent::after();
 	}
 
 	public function action_index()
@@ -29,4 +40,8 @@ class Controller_Template extends Kohana_Controller_Template {
 		$this->template->msg =  $msg;
 	}
 
+	public function add_script($script)
+	{
+		$this->_scripts[] = $script;
+	}
 }
