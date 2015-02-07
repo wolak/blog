@@ -5,6 +5,10 @@ class Controller_Template extends Kohana_Controller_Template {
 
 	public function before()
 	{
+		if ($this->request->is_ajax())
+		{
+			$this->auto_render = FALSE;
+		}
 	    parent::before();
     	$auth = Auth::instance();
     	/* If the user is not logged in, redirect them to login*/

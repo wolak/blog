@@ -9,7 +9,6 @@ class Auth_Blog extends Auth
         {
             // Load the user
             $user = ORM::factory('user');
-            Debug::log($username);
             $user->where('username', '=', $username)
                 ->find();
             if ($user->loaded())
