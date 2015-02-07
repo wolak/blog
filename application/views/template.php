@@ -6,11 +6,12 @@
     <!-- Bootstrap -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="/assets/css/bootstrap_theme.css" rel="stylesheet" media="screen">
+    <link href="/assets/css/main.css" rel="stylesheet" media="screen">
 
   </head>
   <body>
     <div class="container">
-        <h3 class="muted">The Awesome Blog!</h3>
+        <h3 class="mainTitle muted">The Awesome Blog!</h3>
         <?php if ($logged_in) echo $navbar; ?>
         <?php echo $content; ?>
 
