@@ -13,7 +13,12 @@
     echo '<div class="span12">';
     echo '<h3>'.$post->title.'<h3>';
     echo '<p>'.$post->post.'</p>';
-    echo '<span><button data-postID="'.$post->id.'" class="btn">View comments</button></span></div>';
+    echo '<span><button data-post-id="'.$post->id.'" class="viewPost btn">View comments</button></span>';
+    if ($post->user_id == Auth::instance()->get_user()->id)
+    {
+      echo '<span><button data-post-id="'.$post->id.'" class="deletePost btn">Delete Post</button></span>';
+    }
+    echo '</div>';
   }
 ?>
 </div>

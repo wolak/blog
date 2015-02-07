@@ -33,6 +33,7 @@ class Controller_Blog extends Controller_Template {
 
 	public function action_posts()
 	{
+		$this->add_script('/assets/js/postview.js');
 		$posts = View::factory("posts");
 		$posts->posts = ORM::factory('post')->order_by('created_on')->find_all();
 		$this->template->content = $posts;
@@ -52,6 +53,13 @@ class Controller_Blog extends Controller_Template {
 		$post->post = $data['content'];
 		$post->user_id = Auth::instance()->get_user()->id;
 		$post->save();
-		$this->response->body("done");
+	}
+
+	public function action_delete_post()
+	{
+		$data = $this->request->post();
+		//Load the post id and try to delete it.
+		$post = ORM::factory("post", $data['post_id']);
+		$post->delete();
 	}
 }
