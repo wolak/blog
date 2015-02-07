@@ -9,8 +9,13 @@ class Controller_Template extends Kohana_Controller_Template {
 	    if ($this->auto_render === TRUE)
     	{
     		$auth = Auth::instance();
+    		$is_author = FALSE;
+    		if ($auth->logged_in())
+    		{
+    			$is_author = $auth->get_user()->is_author();
+    		}
     		$navbar = View::factory("navigation");
-    		$navbar->is_author = $auth->get_user()->is_author();
+    		$navbar->is_author = $is_author;
     		$navbar->active = $this->request->action();
     		$this->template->navbar = $navbar;
     		$this->template->logged_in = $auth->logged_in();
