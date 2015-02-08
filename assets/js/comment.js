@@ -28,7 +28,7 @@ $( document ).ready(function() {
         	if (canUpdate) {
         		updateButton = $("<button class='btn'>Update</button>");
         		updateButton.click($.proxy(function(){
-        			this.enableUpdate();
+        			this.enableUpdate("Complete Update");
         		}, this));
         		$container.append(updateButton);
         	}
@@ -39,9 +39,9 @@ $( document ).ready(function() {
         	}
         	return $container;
         };
-        this.enableUpdate = function() {
+        this.enableUpdate = function(label) {
         	updateButton.unbind("click");
-        	updateButton.html("Complete Update");
+        	updateButton.html(label);
         	updateButton.click($.proxy(function(){
     			this.completeUpdate();
     		}, this));
@@ -53,7 +53,7 @@ $( document ).ready(function() {
         	updateButton.html("Update");
         	this.disableInput();
         	updateButton.click($.proxy(function(){
-    			this.enableUpdate();
+    			this.enableUpdate("Complete Update");
     		}, this));
         };
         this.delete = function() {
@@ -73,7 +73,7 @@ $( document ).ready(function() {
 		var $commentContainer = $($(this).siblings(".commentContainer")[0]);
 		//Remove the View Comment button
 		$(this).remove();
-		var commentTracker = [], $placeholder, current, comment;
+		var commentTracker = [], $placeholder, current, comment, $newComment;
 		var comments = [
 			{
 				postId: 1,
@@ -98,6 +98,16 @@ $( document ).ready(function() {
 			comment.render($placeholder);
 			commentTracker.push(comment);
 		}
+		$newComment = $("<button class='btn'>New Comment</button>");
+		$newComment.click(function(){
+			var comment = new Comment(null, null, "", true, true);
+			var $placeholder = $("<div class='commentPlaceholder'></div>");
+			$(this).before($placeholder);
+			comment.render($placeholder);
+			comment.enableUpdate("Save Comment");
+			commentTracker.push(comment);
+		})
+		$commentContainer.append($newComment);
 	});
 
 });
