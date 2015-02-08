@@ -10,10 +10,10 @@
       echo $current_date."<br><hr>";
 
     }
-    echo '<div class="span12">';
+    echo '<div class="span12 blogItem">';
     echo '<h3>'.$post->title.'</h3>';
     echo '<div class="postContent">'.$post->post.'</div>';
-    echo '<button data-post-id="'.$post->id.'" class="viewPost btn">View comments</button>';
+    echo '<button data-post-id="'.$post->id.'" class="viewComments btn">View comments</button>';
     if ($post->user_id == Auth::instance()->get_user()->id)
     {
       echo '<button data-post-id="'.$post->id.'" class="deletePost btn">Delete Post</button>';

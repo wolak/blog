@@ -47,3 +47,10 @@ body {
 #postSubmit{
   width:200px;
 }
+.newCommentBtn{
+  margin-top: 25px;
+}
+.blogItem{
+  padding: 10px;
+  border: 1px solid;
+}
