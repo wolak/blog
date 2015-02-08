@@ -71,4 +71,51 @@ class Controller_Blog extends Controller_Template {
 		$post = ORM::factory("post", $data['post_id']);
 		$post->delete();
 	}
+
+	public function action_get_comments()
+	{
+		$data = $this->request->post();
+		$comments = ORM::factory('comment')
+			->where('post_id', '=', $data['post_id'])
+			->find_all();
+		$all_comments = array();
+		foreach($comments as $comment)
+		{
+			$all_comments[] = array(
+				"content" 	=> $comment->comment,
+				"postId" 	=> $comment->post_id,
+				"commentId" => $comment->id,
+				"canUpdate" => $comment->can_user_update(),
+				"canDelete" => $comment->can_user_delete() 
+			);
+		}
+		$this->response->body(json_encode($all_comments));
+	}
+
+	public function action_save_comment()
+	{
+		$data = $this->request->post();
+		$post_id = $data['post_id'];
+		$comment_id = $data['comment_id'];
+		$content = $data['comment'];
+		if (empty($comment_id))
+		{
+			$comment = ORM::factory('comment');
+			$comment->post_id = $post_id;
+		}
+		else
+		{
+			$comment = ORM::factory('comment', $comment_id);
+		}
+		$comment->comment = $content;
+		$comment->save();
+	}
+
+	public function action_delete_comment()
+	{
+		$data = $this->request->post();
+		//Load the comment id and try to delete it.
+		$comment = ORM::factory("comment", $data['comment_id']);
+		$comment->delete();
+	}
 }
