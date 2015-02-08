@@ -9,7 +9,7 @@ return array
 			'username' => 'root',
 			'password' => '',
 			'persistent' => FALSE,
-			),
+		),
 		'table_prefix' => '',
 		'charset' => 'utf8',
 		'caching' => FALSE,
