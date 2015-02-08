@@ -34,6 +34,7 @@ class Controller_Blog extends Controller_Template {
 	public function action_posts()
 	{
 		$this->add_script('/assets/js/postview.js');
+		$this->add_script('/assets/js/comment.js');
 		$posts = View::factory("posts");
 		$posts->posts = ORM::factory('post')->order_by('created_on', 'desc')->find_all();
 		$this->template->content = $posts;
