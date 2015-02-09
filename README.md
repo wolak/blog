@@ -1,6 +1,6 @@
 # Installation Step
 
-1.  This project requires the Kohana PHP Framework. It assumes that this repository is cloned to a folder that is configured to be the DocumentRoot in an Apache Virtual host configuration. Ie: c:\wamp\blog\application would be the application folder in the repo.
+1- This project requires the Kohana PHP Framework. It assumes that this repository is cloned to a folder that is configured to be the DocumentRoot in an Apache Virtual host configuration. Ie: c:\wamp\blog\application would be the application folder in the repo.
     
 ```
 <VirtualHost *:80>
@@ -10,7 +10,7 @@
     
 ```
 
-2.  Update the application/config/database.php to the proper connection parameters:
+2- Update the application/config/database.php to the proper connection parameters:
 ```
 'connection' => array(
 	'hostname' => 'localhost',
@@ -21,7 +21,7 @@
 )
 ```
 
-3. Run the database creation on the database setup in step 2 using the script which is found in
+3- Run the database creation on the database setup in step 2 using the script which is found in
 ### database.sql
 
 # NOTES
